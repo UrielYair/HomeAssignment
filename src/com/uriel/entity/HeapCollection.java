@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 
 public class HeapCollection implements EntityCollection
 {
-    // Implement of the collection in priority queue using comparator.
+    // Implement of the collection using priority queue with comparator.
     // Add    - O(log n)
     // Remove - O(log n)
 
