@@ -22,8 +22,6 @@ public class LinkedListCollection implements EntityCollection
     @Override
     public Entity removeMaxValue()
     {
-        //TODO: check if duplicate value are allowed.
-
 
         if (this.collection.isEmpty())
             return null;
@@ -48,7 +46,8 @@ public class LinkedListCollection implements EntityCollection
     public void printCollection()
     {
         for (Entity entity: this.collection) {
-            System.out.println(entity.getValue() + ", ");
+            System.out.print(entity.getValue() + ", ");
         }
+        System.out.println();
     }
 }

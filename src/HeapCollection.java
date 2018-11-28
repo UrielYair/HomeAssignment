@@ -33,7 +33,8 @@ public class HeapCollection implements EntityCollection
     public void printCollection()
     {
         for (int i = 0; i < this.collection.size(); i++) {
-            System.out.println(this.collection.poll().getValue() + ", ");
+            System.out.print(this.collection.poll().getValue() + ", ");
         }
+        System.out.println();
     }
 }

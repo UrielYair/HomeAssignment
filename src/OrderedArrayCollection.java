@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
-public class ArrayCollection implements EntityCollection
+public class OrderedArrayCollection implements EntityCollection
 {
     // Implement of the collection in an ordered Array
     // Add    - O(n)
     // Remove - O(1)
 
     private ArrayList<Entity> collection;
-    public ArrayCollection()
+    public OrderedArrayCollection()
     {
         this.collection = new ArrayList<>();
     }
@@ -42,7 +42,8 @@ public class ArrayCollection implements EntityCollection
     public void printCollection()
     {
         for (Entity entity: this.collection) {
-            System.out.println(entity.getValue() + ", ");
+            System.out.print(entity.getValue() + ", ");
         }
+        System.out.println();
     }
 }
