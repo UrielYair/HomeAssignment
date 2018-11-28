@@ -7,8 +7,6 @@ public class ArrayCollection implements EntityCollection
     // Remove - O(1)
 
     private ArrayList<Entity> collection;
-
-
     public ArrayCollection()
     {
         this.collection = new ArrayList<>();
@@ -40,4 +38,11 @@ public class ArrayCollection implements EntityCollection
         return entityToReturn;
     }
 
+    @Override
+    public void printCollection()
+    {
+        for (Entity entity: this.collection) {
+            System.out.println(entity.getValue() + ", ");
+        }
+    }
 }

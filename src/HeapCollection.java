@@ -28,4 +28,12 @@ public class HeapCollection implements EntityCollection
         this.collection.poll();
         return entityToReturn;
     }
+
+    @Override
+    public void printCollection()
+    {
+        for (int i = 0; i < this.collection.size(); i++) {
+            System.out.println(this.collection.poll().getValue() + ", ");
+        }
+    }
 }

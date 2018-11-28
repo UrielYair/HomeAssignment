@@ -43,4 +43,12 @@ public class LinkedListCollection implements EntityCollection
         this.collection.remove(indexOfMaxValue);
         return maxEntity;
     }
+
+    @Override
+    public void printCollection()
+    {
+        for (Entity entity: this.collection) {
+            System.out.println(entity.getValue() + ", ");
+        }
+    }
 }
