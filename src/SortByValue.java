@@ -5,6 +5,6 @@ public class SortByValue implements Comparator<Entity>
     @Override
     public int compare(Entity a, Entity b)
     {
-        return a.getValue()-b.getValue();
+        return b.getValue()-a.getValue();
     }
 }

@@ -1,5 +1,7 @@
 import java.util.Comparator;
+
 import java.util.PriorityQueue;
+
 
 public class HeapCollection implements EntityCollection
 {
@@ -32,9 +34,16 @@ public class HeapCollection implements EntityCollection
     @Override
     public void printCollection()
     {
-        for (int i = 0; i < this.collection.size(); i++) {
-            System.out.print(this.collection.poll().getValue() + ", ");
+
+        // TODO: Create print for heap by using iterators. doesn't have to print in order
+        if(this.collection.isEmpty())
+            System.out.println("Heap is empty.");
+        else
+        {
+            while (!this.collection.isEmpty()) {
+                System.out.print(this.collection.poll().getValue() + ", ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }

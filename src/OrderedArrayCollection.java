@@ -9,7 +9,7 @@ public class OrderedArrayCollection implements EntityCollection
     private ArrayList<Entity> collection;
     public OrderedArrayCollection()
     {
-        this.collection = new ArrayList<>();
+        this.collection = new ArrayList<Entity>();
     }
 
     @Override
@@ -19,9 +19,9 @@ public class OrderedArrayCollection implements EntityCollection
             this.collection.add(entity);
         else
         {
-            for (int i = 0; i < collection.size()-1; i++)
+            for (int i = 0; i < collection.size(); i++)
             {
-                if (entity.getValue()>collection.get(i).getValue() && entity.getValue()<=collection.get(i+1).getValue())
+                if (entity.getValue()<this.collection.get(i).getValue())
                 {
                     this.collection.add(i, entity);
                     break;
@@ -41,9 +41,13 @@ public class OrderedArrayCollection implements EntityCollection
     @Override
     public void printCollection()
     {
-        for (Entity entity: this.collection) {
-            System.out.print(entity.getValue() + ", ");
+        if (this.collection.isEmpty())
+            System.out.println("Array is empty.");
+        else {
+            for (Entity entity : this.collection) {
+                System.out.print(entity.getValue() + ", ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }

@@ -34,6 +34,7 @@ public class LinkedListCollection implements EntityCollection
             if (collection.get(i).getValue() > maxValue)
             {
                 maxEntity = collection.get(i);
+                maxValue = maxEntity.getValue();
                 indexOfMaxValue = i;
             }
         }
@@ -45,9 +46,13 @@ public class LinkedListCollection implements EntityCollection
     @Override
     public void printCollection()
     {
-        for (Entity entity: this.collection) {
-            System.out.print(entity.getValue() + ", ");
+        if (this.collection.isEmpty())
+            System.out.println("Linked list is Empty.");
+        else {
+            for (Entity entity : this.collection) {
+                System.out.print(entity.getValue() + ", ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 }
