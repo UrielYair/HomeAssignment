@@ -1,3 +1,5 @@
+package com.uriel.entity;
+
 import java.util.Comparator;
 
 import java.util.PriorityQueue;
@@ -5,14 +7,13 @@ import java.util.PriorityQueue;
 
 public class HeapCollection implements EntityCollection
 {
-    // Implement of the collection in priority queue
+    // Implement of the collection in priority queue using comparator.
     // Add    - O(log n)
     // Remove - O(log n)
 
     private PriorityQueue<Entity> collection;
 
-    public HeapCollection()
-    {
+    public HeapCollection() {
         Comparator<Entity> comparator = new SortByValue();
         this.collection = new PriorityQueue<>(comparator);
     }
@@ -24,18 +25,20 @@ public class HeapCollection implements EntityCollection
     }
 
     @Override
-    public Entity removeMaxValue()
-    {
-        Entity entityToReturn = this.collection.peek();
-        this.collection.poll();
-        return entityToReturn;
+    public Entity removeMaxValue() {
+        if (!this.collection.isEmpty())
+        {
+            Entity entityToReturn = this.collection.peek();
+            this.collection.poll();
+            return entityToReturn;
+        }
+        else
+            return null;
     }
 
     @Override
-    public void printCollection()
-    {
+    public void printCollection(){
 
-        // TODO: Create print for heap by using iterators. doesn't have to print in order
         if(this.collection.isEmpty())
             System.out.println("Heap is empty.");
         else

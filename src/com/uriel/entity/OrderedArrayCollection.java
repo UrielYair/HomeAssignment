@@ -1,3 +1,5 @@
+package com.uriel.entity;
+
 import java.util.ArrayList;
 
 public class OrderedArrayCollection implements EntityCollection
@@ -9,12 +11,11 @@ public class OrderedArrayCollection implements EntityCollection
     private ArrayList<Entity> collection;
     public OrderedArrayCollection()
     {
-        this.collection = new ArrayList<Entity>();
+        this.collection = new ArrayList<>();
     }
 
     @Override
-    public void add(Entity entity)
-    {
+    public void add(Entity entity) {
         if (collection.isEmpty())
             this.collection.add(entity);
         else
@@ -31,16 +32,21 @@ public class OrderedArrayCollection implements EntityCollection
     }
 
     @Override
-    public Entity removeMaxValue()
-    {
-        Entity entityToReturn = this.collection.get(this.collection.size()-1);
-        this.collection.remove(this.collection.size()-1);
-        return entityToReturn;
+    public Entity removeMaxValue() {
+
+        if (!this.collection.isEmpty())
+        {
+            Entity entityToReturn = this.collection.get(this.collection.size() - 1);
+            this.collection.remove(this.collection.size() - 1);
+            return entityToReturn;
+        }
+        else
+            return null;
     }
 
     @Override
-    public void printCollection()
-    {
+    public void printCollection() {
+
         if (this.collection.isEmpty())
             System.out.println("Array is empty.");
         else {

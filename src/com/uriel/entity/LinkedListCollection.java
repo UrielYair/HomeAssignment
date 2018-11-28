@@ -1,3 +1,5 @@
+package com.uriel.entity;
+
 import java.util.LinkedList;
 
 public class LinkedListCollection implements EntityCollection
@@ -20,32 +22,30 @@ public class LinkedListCollection implements EntityCollection
     }
 
     @Override
-    public Entity removeMaxValue()
-    {
+    public Entity removeMaxValue() {
 
         if (this.collection.isEmpty())
             return null;
-
-        int indexOfMaxValue = -1, maxValue = Integer.MIN_VALUE;
-        Entity maxEntity = null;
-
-        for (int i = 0; i < this.collection.size(); i++)
+        else
         {
-            if (collection.get(i).getValue() > maxValue)
-            {
-                maxEntity = collection.get(i);
-                maxValue = maxEntity.getValue();
-                indexOfMaxValue = i;
-            }
-        }
+            int indexOfMaxValue = -1, maxValue = Integer.MIN_VALUE;
+            Entity maxEntity = null;
 
-        this.collection.remove(indexOfMaxValue);
-        return maxEntity;
+            for (int i = 0; i < this.collection.size(); i++) {
+                if (collection.get(i).getValue() > maxValue) {
+                    maxEntity = collection.get(i);
+                    maxValue = maxEntity.getValue();
+                    indexOfMaxValue = i;
+                }
+            }
+
+            this.collection.remove(indexOfMaxValue);
+            return maxEntity;
+        }
     }
 
     @Override
-    public void printCollection()
-    {
+    public void printCollection() {
         if (this.collection.isEmpty())
             System.out.println("Linked list is Empty.");
         else {

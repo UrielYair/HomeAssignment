@@ -1,4 +1,4 @@
-
+package com.uriel.entity;
 
 public class Entity
 {

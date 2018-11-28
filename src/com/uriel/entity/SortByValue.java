@@ -1,3 +1,5 @@
+package com.uriel.entity;
+
 import java.util.Comparator;
 
 public class SortByValue implements Comparator<Entity>
