@@ -2,6 +2,8 @@ import com.uriel.entity.Entity;
 import com.uriel.entity.HeapCollection;
 import com.uriel.entity.LinkedListCollection;
 import com.uriel.entity.OrderedArrayCollection;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Driver
@@ -62,40 +64,49 @@ public class Driver
 
         while(choose != 0 )
         {
-            printMenu();
-            choose = scanner.nextInt();
+            try {
+                printMenu();
+                choose = scanner.nextInt();
 
-            switch (choose)
+                switch (choose) {
+                    case 0:
+                    {
+                        System.out.println("Bye Bye");
+                        break;
+                    }
+                    case 1: {
+                        System.out.println("Please enter number for entity value.");
+                        valueOfEntity = scanner.nextInt();
+                        add(oc, hc, llc, valueOfEntity);
+                        break;
+                    }
+                    case 2: {
+                        removeMaxValue(oc, hc, llc);
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("Printing the heap implemented by using poll() method. \n" +
+                                "which means that if you still want to print the current status of the " +
+                                "heap, the heap will be cleared. \nDo you want to continue and print? Y/N ");
+                        scanner.nextLine();
+                        String answer = scanner.nextLine();
+                        if (answer.equalsIgnoreCase("y"))
+                            printCollections(oc, hc, llc);
+                        break;
+                    }
+
+                    default: {
+                        System.out.println("Not a valid option.");
+                        break;
+                    }
+                }
+            }
+            catch(InputMismatchException e)
             {
-                case 1:
-                {
-                    System.out.println("Please enter number for entity value.");
-                    valueOfEntity = scanner.nextInt();
-                    add(oc, hc, llc, valueOfEntity);
-                    break;
-                }
-                case 2:
-                {
-                    removeMaxValue(oc, hc, llc);
-                    break;
-                }
-                case 3:
-                {
-                    System.out.println("Printing the heap implemented by using poll() method. \n" +
-                            "which means that if you still want to print the current status of the " +
-                            "heap, the heap will be cleared. \nDo you want to continue and print? Y/N ");
-                    scanner.nextLine();
-                    String answer = scanner.nextLine();
-                    if (answer.equalsIgnoreCase("y"))
-                        printCollections(oc, hc, llc);
-                    break;
-                }
-
-                default:
-                {
-                    System.out.println("Not a valid option.");
-                    break;
-                }
+                //e.printStackTrace();
+                System.out.println("Bad input!\nplease try again.");
+                choose = -1;
+                scanner.nextLine();
             }
 
         }
