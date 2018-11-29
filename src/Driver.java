@@ -2,7 +2,6 @@ import com.uriel.entity.Entity;
 import com.uriel.entity.HeapCollection;
 import com.uriel.entity.LinkedListCollection;
 import com.uriel.entity.OrderedArrayCollection;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -38,22 +37,16 @@ public class Driver
     }
 
     public static void printMenu(){
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append("please choose from the following options: \n");
-        stringBuilder.append("1. Add entity to entity collection.\n");
-        stringBuilder.append("2. Remove maximal value from entity collection.\n");
-        stringBuilder.append("3. Print collections. \n");
-        stringBuilder.append("0. Exit. \n");
-
-        System.out.println(stringBuilder.toString());
+        System.out.println("please choose from the following options: \n" +
+                "1. Add entity to entity collection.\n" +
+                "2. Remove maximal value from entity collection.\n" +
+                "3. Print collections. \n" +
+                "0. Exit. \n");
     }
 
     public static void main(String[] args)
     {
-
-        //Declaring objects of implementations:
-
+        // Declaring implementation objects.
         OrderedArrayCollection  oc  = new OrderedArrayCollection();
         HeapCollection          hc  = new HeapCollection();
         LinkedListCollection    llc = new LinkedListCollection();
@@ -69,22 +62,25 @@ public class Driver
                 choose = scanner.nextInt();
 
                 switch (choose) {
-                    case 0:
+                    case 0:         // Breaking the loop.
                     {
                         System.out.println("Bye Bye");
                         break;
                     }
-                    case 1: {
+                    case 1:         // Add new entity.
+                    {
                         System.out.println("Please enter number for entity value.");
                         valueOfEntity = scanner.nextInt();
                         add(oc, hc, llc, valueOfEntity);
                         break;
                     }
-                    case 2: {
+                    case 2:         // Remove Maximal element.
+                    {
                         removeMaxValue(oc, hc, llc);
                         break;
                     }
-                    case 3: {
+                    case 3:         // Print all elements in every one of the collections.
+                    {
                         System.out.println("Printing the heap implemented by using poll() method. \n" +
                                 "which means that if you still want to print the current status of the " +
                                 "heap, the heap will be cleared. \nDo you want to continue and print? Y/N ");
@@ -95,7 +91,8 @@ public class Driver
                         break;
                     }
 
-                    default: {
+                    default:
+                    {
                         System.out.println("Not a valid option.");
                         break;
                     }
@@ -111,6 +108,5 @@ public class Driver
 
         }
     }
-
 
 }
