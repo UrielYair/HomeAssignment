@@ -2,6 +2,7 @@ import com.uriel.entity.Entity;
 import com.uriel.entity.HeapCollection;
 import com.uriel.entity.LinkedListCollection;
 import com.uriel.entity.OrderedArrayCollection;
+import java.util.Scanner;
 
 public class Driver
 {
@@ -34,24 +35,71 @@ public class Driver
         llc.removeMaxValue();
     }
 
+    public static void printMenu(){
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("please choose from the following options: \n");
+        stringBuilder.append("1. Add entity to entity collection.\n");
+        stringBuilder.append("2. Remove maximal value from entity collection.\n");
+        stringBuilder.append("3. Print collections. \n");
+        stringBuilder.append("0. Exit. \n");
+
+        System.out.println(stringBuilder.toString());
+    }
+
     public static void main(String[] args)
     {
+
+        //Declaring objects of implementations:
 
         OrderedArrayCollection  oc  = new OrderedArrayCollection();
         HeapCollection          hc  = new HeapCollection();
         LinkedListCollection    llc = new LinkedListCollection();
 
-        add(oc,hc,llc,17);
-        add(oc,hc,llc,6);
-        add(oc,hc,llc,12);
-        add(oc,hc,llc,0);
+        Scanner scanner = new Scanner(System.in);
+        int choose= -1;
+        int valueOfEntity;
 
-        removeMaxValue(oc,hc,llc);
-        removeMaxValue(oc,hc,llc);
-        removeMaxValue(oc,hc,llc);
-        removeMaxValue(oc,hc,llc);
-        removeMaxValue(oc,hc,llc);
+        while(choose != 0 )
+        {
+            printMenu();
+            choose = scanner.nextInt();
 
-        printCollections(oc,hc,llc);
+            switch (choose)
+            {
+                case 1:
+                {
+                    System.out.println("Please enter number for entity value.");
+                    valueOfEntity = scanner.nextInt();
+                    add(oc, hc, llc, valueOfEntity);
+                    break;
+                }
+                case 2:
+                {
+                    removeMaxValue(oc, hc, llc);
+                    break;
+                }
+                case 3:
+                {
+                    System.out.println("Printing the heap implemented by using poll() method. \n" +
+                            "which means that if you still want to print the current status of the " +
+                            "heap, the heap will be cleared. \nDo you want to continue and print? Y/N ");
+                    scanner.nextLine();
+                    String answer = scanner.nextLine();
+                    if (answer.equalsIgnoreCase("y"))
+                        printCollections(oc, hc, llc);
+                    break;
+                }
+
+                default:
+                {
+                    System.out.println("Not a valid option.");
+                    break;
+                }
+            }
+
+        }
     }
+
+
 }

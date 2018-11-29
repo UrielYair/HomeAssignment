@@ -16,8 +16,12 @@ public class OrderedArrayCollection implements EntityCollection
 
     @Override
     public void add(Entity entity) {
-        if (collection.isEmpty())
+        boolean entityAdded = false;
+        if (collection.isEmpty()) {
             this.collection.add(entity);
+            entityAdded = true;
+        }
+
         else
         {
             for (int i = 0; i < collection.size(); i++)
@@ -25,10 +29,14 @@ public class OrderedArrayCollection implements EntityCollection
                 if (entity.getValue()<this.collection.get(i).getValue())
                 {
                     this.collection.add(i, entity);
+                    entityAdded = true;
                     break;
                 }
             }
         }
+        if (!entityAdded)
+            this.collection.add(this.collection.size(),entity);
+
     }
 
     @Override
